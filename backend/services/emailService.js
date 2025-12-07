@@ -345,7 +345,7 @@ class EmailService {
             </div>
             
             <div class="cta">
-              <a href="https://worklife-balancer-1.onrender.com/dashboard" class="btn">
+              <a href="http://localhost:5173/dashboard" class="btn">
                 <span class="emoji">🚀</span> View Live Dashboard
               </a>
             </div>

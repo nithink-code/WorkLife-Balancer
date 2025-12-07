@@ -3,7 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const userGoogle = require('../models/Auth');
 const jwt = require("jsonwebtoken");
 
-const callbackURL = process.env.GOOGLE_CALLBACK_URL || "https://worklife-balancer-1.onrender.com/auth/google/callback";
+const callbackURL = process.env.GOOGLE_CALLBACK_URL || "http://localhost:8080/auth/google/callback";
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,

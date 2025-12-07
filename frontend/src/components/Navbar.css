@@ -2,23 +2,24 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100% - 20px);
+  right: 0;
+  width: 100%;
   height: 80px;
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
   padding: 0 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 
-              0 6px 20px rgba(139, 92, 246, 0.18),
-              0 8px 30px rgba(139, 92, 246, 0.10);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 6px 20px rgba(139, 92, 246, 0.18),
+    0 8px 30px rgba(139, 92, 246, 0.10);
   z-index: 1030;
   border-bottom: 3px solid;
-  border-image: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(139, 92, 246, 0.25) 5%, 
-    rgba(139, 92, 246, 0.25) 95%, 
-    transparent 100%) 1;
+  border-image: linear-gradient(90deg,
+      transparent 0%,
+      rgba(139, 92, 246, 0.25) 5%,
+      rgba(139, 92, 246, 0.25) 95%,
+      transparent 100%) 1;
 }
 
 .brand-name {
@@ -30,7 +31,8 @@
   align-items: center;
   gap: 10px;
 }
-.brand-name:hover{
+
+.brand-name:hover {
   text-shadow: 0 0 12px #6674CC;
   color: #6674CC;
 }
@@ -47,6 +49,7 @@
   font-weight: 500;
   font-size: 1rem;
 }
+
 .nav-link-custom:hover {
   color: #6674CC;
   text-shadow: 0 0 8px #6674CC;
@@ -61,8 +64,9 @@
   font-weight: 600;
   cursor: pointer;
 }
-.signup-button:hover{
- border: 1px solid #6674CC;
+
+.signup-button:hover {
+  border: 1px solid #6674CC;
 }
 
 .avatar-btn {
@@ -117,10 +121,13 @@
 }
 
 @keyframes pulse-badge {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.6);
     transform: scale(1);
   }
+
   50% {
     box-shadow: 0 2px 16px rgba(59, 130, 246, 0.9);
     transform: scale(1.05);
@@ -158,6 +165,7 @@
   border-radius: 4px;
   transition: background 0.2s;
 }
+
 .close-cross:hover {
   background: #232429;
 }
@@ -196,6 +204,7 @@
   justify-content: flex-start;
   transition: background 0.18s;
 }
+
 .signout-row:hover {
   background: #232429;
 }

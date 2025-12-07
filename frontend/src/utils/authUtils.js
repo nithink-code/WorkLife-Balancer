@@ -1,6 +1,6 @@
 // Authentication utility for handling token refresh and validation
 class AuthUtils {
-    static API_URL = 'https://worklife-balancer-1.onrender.com';
+    static API_URL = 'http://localhost:8080';
 
     static isAuthenticated() {
         const token = localStorage.getItem('token');

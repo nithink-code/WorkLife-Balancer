@@ -17,31 +17,31 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://worklife-balancer-1.onrender.com',
+        target: 'http://localhost:8080',
         changeOrigin: true
       },
       '/auth': {
-        target: 'https://worklife-balancer-1.onrender.com',
+        target: 'http://localhost:8080',
         changeOrigin: true
       },
       '/user': {
-        target: 'https://worklife-balancer-1.onrender.com',
+        target: 'http://localhost:8080',
         changeOrigin: true
       },
       '/pomodoro': {
-        target: 'https://worklife-balancer-1.onrender.com',
+        target: 'http://localhost:8080',
         changeOrigin: true
       },
       // '/mood': {
-      //   target: 'https://worklife-balancer-1.onrender.com',
+      //   target: 'http://localhost:8080',
       //   changeOrigin: true
       // },
       '/break': {
-        target: 'https://worklife-balancer-1.onrender.com',
+        target: 'http://localhost:8080',
         changeOrigin: true
       },
       '/email': {
-        target: 'https://worklife-balancer-1.onrender.com',
+        target: 'http://localhost:8080',
         changeOrigin: true
       }
     }

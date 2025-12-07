@@ -10,8 +10,8 @@ const isProduction = window.location.hostname !== 'localhost' &&
 
 // Set API base URL based on environment
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-  ? import.meta.env.VITE_API_BASE_URL
-  : 'https://worklife-balancer-1.onrender.com';
+  ? 'http://localhost:8080'
+  : 'https://worklife-balancer.onrender.com';
 
 (`[API Config] Environment: ${isProduction ? 'PRODUCTION' : 'DEVELOPMENT'}`);
 (`[API Config] API Base URL: ${API_BASE_URL}`);
