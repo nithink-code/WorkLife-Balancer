@@ -5,7 +5,7 @@ const fs = require('fs').promises;
 class EmailService {
   constructor() {
     this.isDemoMode = false;
-    
+
     // Initialize SendGrid with API key from .env
     try {
       if (!process.env.SENDGRID_API_KEY) {
@@ -13,14 +13,14 @@ class EmailService {
         this.isDemoMode = true;
         return;
       }
-      
+
       // Set SendGrid API key
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-      
+
       // Store from email configuration
       this.fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@worklifebalancer.com';
       this.fromName = process.env.SENDGRID_FROM_NAME || 'WorkLife Balancer';
-      
+
       ('📧 Email service initialized with SendGrid');
       (`📧 From: ${this.fromName} <${this.fromEmail}>`);
     } catch (error) {
@@ -38,7 +38,7 @@ class EmailService {
       ('👤 User name:', userName);
       ('📄 Report file:', reportFileName);
       ('📦 Has report buffer:', !!reportBuffer);
-      
+
       // Check if in demo mode
       if (this.isDemoMode) {
         ('🎭 DEMO MODE: Simulating email send (no real email sent)');
@@ -49,18 +49,18 @@ class EmailService {
           isDemoMode: true
         };
       }
-      
+
       ('📧 Sending real email via SendGrid...');
-      
+
       const welcomeMessage = this.generateWelcomeMessage(userName);
-      
+
       // Prepare email content and attachment
       let attachments = [];
       if (reportBuffer && reportBuffer !== 'auto-generated-report' && reportBuffer !== 'demo-report-data' && reportBuffer !== null) {
         ('📎 Processing PDF attachment...');
         ('📦 Buffer type:', typeof reportBuffer);
         ('📏 Buffer length:', reportBuffer.length || 'N/A');
-        
+
         // Process real PDF buffer
         let base64Content;
         if (typeof reportBuffer === 'string' && reportBuffer.startsWith('data:application/pdf;base64,')) {
@@ -73,17 +73,17 @@ class EmailService {
           base64Content = Buffer.from(reportBuffer).toString('base64');
           ('✅ Converted buffer to base64');
         }
-        
+
         ('📊 Base64 content length:', base64Content.length);
         ('📄 Attachment filename:', reportFileName);
-        
+
         attachments.push({
           content: base64Content,
           filename: reportFileName,
           type: 'application/pdf',
           disposition: 'attachment'
         });
-        
+
         ('✅ PDF attachment prepared successfully');
       } else {
         ('⚠️ No PDF buffer provided - sending email without attachment');
@@ -99,7 +99,7 @@ class EmailService {
         html: this.generateEmailHTML(userName, welcomeMessage),
         attachments: attachments.length > 0 ? attachments : undefined
       };
-      
+
       ('📧 Email configuration:', {
         to: userEmail,
         from: `${this.fromName} <${this.fromEmail}>`,
@@ -109,13 +109,13 @@ class EmailService {
       });
 
       ('📨 Attempting to send actual email...');
-      
+
       try {
         // Send email using SendGrid
         const response = await sgMail.send(msg);
         ('✅ Real email sent successfully via SendGrid');
         ('📬 Response status:', response[0].statusCode);
-        
+
         return {
           success: true,
           messageId: response[0].headers['x-message-id'] || 'sendgrid-' + Date.now(),
@@ -123,7 +123,7 @@ class EmailService {
         };
       } catch (emailError) {
         console.error('❌ SendGrid sending failed:', emailError.message);
-        
+
         // Log detailed error information
         if (emailError.response) {
           console.error('SendGrid error details:', {
@@ -132,7 +132,7 @@ class EmailService {
             headers: emailError.response?.headers
           });
         }
-        
+
         // If SendGrid auth fails, switch to demo mode
         if (emailError.code === 401 || emailError.code === 403) {
           ('🔄 SendGrid authentication failed, switching to demo mode');
@@ -144,17 +144,17 @@ class EmailService {
             isDemoMode: true
           };
         }
-        
+
         throw emailError;
       }
-      
+
     } catch (error) {
       console.error('❌ Email service error:', error);
       console.error('Error details:', {
         code: error.code,
         message: error.message
       });
-      
+
       // Return error details for better debugging
       throw new Error(`Email sending failed: ${error.message}`);
     }
@@ -164,7 +164,7 @@ class EmailService {
   generateWelcomeMessage(userName) {
     const hour = new Date().getHours();
     let greeting;
-    
+
     if (hour < 12) {
       greeting = 'Good morning';
     } else if (hour < 17) {
@@ -172,12 +172,12 @@ class EmailService {
     } else {
       greeting = 'Good evening';
     }
-    
+
     // Clean up the user name - remove email domain if it's an email
-    const cleanName = userName && userName.includes('@') ? 
-      userName.split('@')[0] : 
+    const cleanName = userName && userName.includes('@') ?
+      userName.split('@')[0] :
       userName || 'there';
-    
+
     return `${greeting}, ${cleanName}! 🌟`;
   }
 
@@ -345,7 +345,7 @@ class EmailService {
             </div>
             
             <div class="cta">
-              <a href="http://localhost:5173/dashboard" class="btn">
+              <a href="https://worklife-balancer-1.onrender.com/dashboard" class="btn">
                 <span class="emoji">🚀</span> View Live Dashboard
               </a>
             </div>
@@ -373,15 +373,15 @@ class EmailService {
         ('🎭 DEMO MODE: Email service test (no real connection)');
         return true;
       }
-      
+
       ('🧪 Testing SendGrid connection...');
-      
+
       // SendGrid doesn't have a direct "verify" method like nodemailer
       // We'll check if API key is set and properly formatted
       if (!process.env.SENDGRID_API_KEY || !process.env.SENDGRID_API_KEY.startsWith('SG.')) {
         throw new Error('Invalid SendGrid API key format');
       }
-      
+
       // Test by sending a validation request to SendGrid
       // Note: We could optionally send a test email to validate the key
       ('✅ SendGrid API key configured correctly');

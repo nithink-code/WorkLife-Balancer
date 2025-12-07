@@ -46,7 +46,7 @@ router.get(
       // Validate user object exists
       if (!user || !user._id || !user.email) {
         console.error('❌ OAuth callback: Invalid user object received:', user);
-        const origin = req.get('origin') || req.get('referer')?.split('/').slice(0, 3).join('/') || 'http://localhost:8080';
+        const origin = req.get('origin') || req.get('referer')?.split('/').slice(0, 3).join('/') || 'https://worklife-balancer-1.onrender.com';
         const errorUrl = `${origin}/?error=oauth_failed&message=${encodeURIComponent('Authentication failed: Invalid user data. Please try again.')}`;
         console.log(`❌ [Auth] Redirecting to error page: ${errorUrl}`);
         return res.redirect(errorUrl);
@@ -70,8 +70,8 @@ router.get(
       });
 
       // Don't use origin header - it will be accounts.google.com during OAuth
-      // Always use the configured frontend URL or localhost:8080
-      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:8080';
+      // Always use the configured frontend URL or deployed URL
+      const frontendUrl = process.env.FRONTEND_URL || 'https://worklife-balancer-1.onrender.com';
 
       // Prepare user data
       const userData = {
@@ -93,7 +93,7 @@ router.get(
       res.redirect(redirectUrl);
     } catch (error) {
       console.error('❌ OAuth callback error:', error);
-      const origin = req.get('origin') || req.get('referer')?.split('/').slice(0, 3).join('/') || 'http://localhost:8080';
+      const origin = req.get('origin') || req.get('referer')?.split('/').slice(0, 3).join('/') || 'https://worklife-balancer-1.onrender.com';
       const errorUrl = `${origin}/?error=oauth_failed&message=${encodeURIComponent('Authentication failed. Please try again.')}`;
       res.redirect(errorUrl);
     }

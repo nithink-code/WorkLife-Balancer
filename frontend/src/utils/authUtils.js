@@ -1,13 +1,13 @@
 // Authentication utility for handling token refresh and validation
 class AuthUtils {
-    static API_URL = 'http://localhost:8080';
-    
+    static API_URL = 'https://worklife-balancer-1.onrender.com';
+
     static isAuthenticated() {
         const token = localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
         return !!(token && userId);
     }
-    
+
     static getUserData() {
         if (!this.isAuthenticated()) {
             return null;
@@ -18,16 +18,16 @@ class AuthUtils {
             name: localStorage.getItem('userName')
         };
     }
-    
+
     static async getValidToken() {
         let token = localStorage.getItem('token');
         let userId = localStorage.getItem('userId');
-        
+
         if (!token || !userId) {
             console.warn('🚨 No token or userId found in localStorage');
             return null;
         }
-        
+
         // Try to refresh/validate the token
         try {
             const response = await fetch(`${this.API_URL}/auth/verify`, {
@@ -35,7 +35,7 @@ class AuthUtils {
                 headers: { 'Authorization': `Bearer ${token}` },
                 credentials: 'include'
             });
-            
+
             if (response.ok) {
                 const data = await response.json();
                 if (data.token) {
@@ -62,7 +62,7 @@ class AuthUtils {
             return token; // Use existing token anyway
         }
     }
-    
+
     static clearAuth() {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
@@ -70,7 +70,7 @@ class AuthUtils {
         localStorage.removeItem('userName');
         ('🗑️ Authentication data cleared');
     }
-    
+
     static redirectToLogin() {
         this.clearAuth();
         try {
@@ -91,16 +91,16 @@ class AuthUtils {
             overlay.appendChild(spinner);
             document.body.appendChild(style);
             document.body.appendChild(overlay);
-        } catch (e) {}
+        } catch (e) { }
         window.location.href = '/';
     }
-    
+
     static async makeAuthenticatedRequest(url, options = {}) {
         const token = await this.getValidToken();
         if (!token) {
             throw new Error('AUTHENTICATION_REQUIRED');
         }
-        
+
         const authOptions = {
             ...options,
             headers: {
@@ -108,13 +108,13 @@ class AuthUtils {
                 'Authorization': `Bearer ${token}`
             }
         };
-        
+
         const response = await fetch(url, authOptions);
-        
+
         if (response.status === 401 || response.status === 403) {
             throw new Error('AUTHENTICATION_FAILED');
         }
-        
+
         return response;
     }
 }
