@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: worklife-balancer
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.20.0
+      - key: NODE_ENV
+        value: production
