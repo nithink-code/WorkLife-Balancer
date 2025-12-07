@@ -8,6 +8,6 @@ services:
     startCommand: npm start
     envVars:
       - key: NODE_VERSION
-        value: 18.20.0
+        value: 14.21.3
       - key: NODE_ENV
         value: production

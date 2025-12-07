@@ -2,7 +2,7 @@
   "name": "worklife-balancer-backend",
   "version": "1.0.0",
   "engines": {
-    "node": "18.x"
+    "node": ">=14.18.0"
   },
   "scripts": {
     "dev": "nodemon backend/index.js",
