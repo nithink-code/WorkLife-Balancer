@@ -1,0 +1,654 @@
+.animated-logo-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.animated-logo {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(52, 178, 123, 0.3));
+}
+
+/* Energy Wave Ripple Animation */
+@keyframes energyRipple {
+  0% {
+    r: 30;
+    opacity: 0.6;
+  }
+  100% {
+    r: 120;
+    opacity: 0;
+  }
+}
+
+.energy-wave {
+  animation: energyRipple 3s ease-out infinite;
+}
+
+.wave-1 {
+  animation-delay: 0s;
+}
+
+.wave-2 {
+  animation-delay: 1s;
+}
+
+.wave-3 {
+  animation-delay: 2s;
+}
+
+/* Balance Beam Animation - Enhanced 3D Tilt */
+@keyframes balanceTilt {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+    transform-origin: center;
+  }
+  15% {
+    transform: rotate(-3deg) translateY(-2px);
+    transform-origin: center;
+  }
+  35% {
+    transform: rotate(-1deg) translateY(0);
+    transform-origin: center;
+  }
+  65% {
+    transform: rotate(1deg) translateY(0);
+    transform-origin: center;
+  }
+  85% {
+    transform: rotate(3deg) translateY(-2px);
+    transform-origin: center;
+  }
+}
+
+.balance-beam {
+  animation: balanceTilt 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Pivot Circle Pulse */
+@keyframes pivotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.pivot-circle {
+  animation: pivotPulse 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Pivot Ring Rotation */
+@keyframes ringRotate {
+  from {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  to {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+.pivot-ring {
+  animation: ringRotate 8s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.pivot-ring-outer {
+  animation: ringRotate 12s linear infinite reverse;
+  transform-origin: 200px 200px;
+}
+
+/* Work Side Float Animation */
+@keyframes floatWork {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.work-side {
+  animation: floatWork 3s ease-in-out infinite;
+}
+
+/* Life Side Float Animation - Opposite Phase */
+@keyframes floatLife {
+  0%, 100% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+}
+
+.life-side {
+  animation: floatLife 3s ease-in-out infinite;
+}
+
+/* Individual Work Icons Animation */
+@keyframes workIconBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+.laptop {
+  animation: workIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.briefcase {
+  animation: workIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.chart {
+  animation: workIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.calendar {
+  animation: workIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 0.9s;
+}
+
+/* Individual Life Icons Animation */
+@keyframes lifeIconBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+.heart {
+  animation: lifeIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.coffee {
+  animation: lifeIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.smile {
+  animation: lifeIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.sun {
+  animation: lifeIconBounce 2.5s ease-in-out infinite;
+  animation-delay: 1.1s;
+}
+
+/* Sun Ray Glow Animation */
+@keyframes sunGlow {
+  0%, 100% {
+    opacity: 0.8;
+    stroke-width: 2;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 3;
+  }
+}
+
+.sun-ray {
+  animation: sunGlow 1.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Heart Beat Animation */
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.heart-shape {
+  animation: heartBeat 1.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Particle Float Animation */
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-15px) translateX(5px);
+    opacity: 0.2;
+  }
+}
+
+.particle-1 {
+  animation: particleFloat 3s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  animation: particleFloat 3.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.particle-3 {
+  animation: particleFloat 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.particle-4 {
+  animation: particleFloat 3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.particle-5 {
+  animation: particleFloat 3.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.particle-6 {
+  animation: particleFloat 4s ease-in-out infinite;
+  animation-delay: 1.3s;
+}
+
+.particle-7 {
+  animation: particleFloat 3.2s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+.particle-8 {
+  animation: particleFloat 3.8s ease-in-out infinite;
+  animation-delay: 1.9s;
+}
+
+.particle-9 {
+  animation: particleFloat 3.3s ease-in-out infinite;
+  animation-delay: 2.1s;
+}
+
+.particle-10 {
+  animation: particleFloat 3.7s ease-in-out infinite;
+  animation-delay: 2.4s;
+}
+
+/* Orbit Rings Rotation */
+@keyframes orbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ring-1 {
+  animation: orbitRotate 20s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.ring-2 {
+  animation: orbitRotate 30s linear infinite reverse;
+  transform-origin: 200px 200px;
+}
+
+.ring-3 {
+  animation: orbitRotate 40s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+/* Connection Lines Pulse */
+@keyframes linePulse {
+  0%, 100% {
+    stroke-opacity: 0.8;
+    stroke-width: 2;
+  }
+  50% {
+    stroke-opacity: 0.4;
+    stroke-width: 3;
+  }
+}
+
+.connect-line {
+  animation: linePulse 2s ease-in-out infinite;
+}
+
+.left-line {
+  animation-delay: 0s;
+}
+
+.right-line {
+  animation-delay: 1s;
+}
+
+/* Orbiting Dots Animation */
+@keyframes orbitDots {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+.orbit-dot {
+  animation: orbitDots 15s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.dot-1 {
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  animation-delay: -3.75s;
+}
+
+.dot-3 {
+  animation-delay: -7.5s;
+}
+
+.dot-4 {
+  animation-delay: -11.25s;
+}
+
+/* Text Label Fade */
+@keyframes labelFade {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.work-label {
+  animation: labelFade 3s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.life-label {
+  animation: labelFade 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* Infinity Symbol Morph Animation */
+@keyframes infinityMorph {
+  0%, 100% {
+    d: path("M 120 200 Q 140 180, 160 200 Q 180 220, 200 200 Q 220 180, 240 200 Q 260 220, 280 200");
+    stroke-opacity: 0.15;
+  }
+  50% {
+    d: path("M 120 200 Q 140 220, 160 200 Q 180 180, 200 200 Q 220 220, 240 200 Q 260 180, 280 200");
+    stroke-opacity: 0.25;
+  }
+}
+
+.infinity-path {
+  animation: infinityMorph 6s ease-in-out infinite;
+}
+
+/* Energy Stream Flow Animation */
+@keyframes streamFlow {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    stroke-dashoffset: -20;
+    opacity: 0.4;
+  }
+}
+
+.energy-stream {
+  animation: streamFlow 2s linear infinite;
+}
+
+.stream-1 {
+  animation-delay: 0s;
+}
+
+.stream-2 {
+  animation-delay: 1s;
+}
+
+/* Tagline Styling and Animation */
+.logo-tagline {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.tagline-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #34B27B 0%, #2dd4bf 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease-in-out infinite;
+  letter-spacing: 0.5px;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.2);
+  }
+}
+
+/* Shimmer Effect for Tagline */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.logo-tagline {
+  position: relative;
+}
+
+.logo-tagline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Platform Glow Effect */
+@keyframes platformGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px currentColor);
+  }
+}
+
+.platform {
+  animation: platformGlow 2s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .animated-logo-container {
+    max-width: 350px;
+    padding: 1rem;
+  }
+  
+  .tagline-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-logo-container {
+    max-width: 280px;
+  }
+  
+  .tagline-text {
+    font-size: 0.9rem;
+  }
+  
+  /* Reduce animation complexity on mobile for better performance */
+  .energy-wave,
+  .orbit-dot,
+  .infinity-path {
+    animation-duration: 4s;
+  }
+}
+
+/* Accessibility - Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-logo-container,
+  .animated-logo-container *,
+  .balance-beam,
+  .pivot-circle,
+  .work-icon,
+  .life-icon,
+  .particle,
+  .orbit-ring,
+  .orbit-dot,
+  .energy-wave,
+  .tagline-text {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus State for Accessibility */
+.animated-logo-container:focus-within {
+  outline: 2px solid #34B27B;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* Enhanced Hover Effects */
+.animated-logo-container:hover .animated-logo {
+  filter: drop-shadow(0 0 50px rgba(52, 178, 123, 0.5)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.3));
+  transition: filter 0.5s ease;
+  transform: scale(1.02);
+}
+
+.animated-logo-container:hover .balance-beam {
+  animation-duration: 2s;
+}
+
+.animated-logo-container:hover .pivot-circle {
+  animation-duration: 1s;
+}
+
+.animated-logo-container:hover .energy-wave {
+  animation-duration: 2s;
+}
+
+.animated-logo-container:hover .orbit-dot {
+  animation-duration: 10s;
+}
+
+.animated-logo-container:hover .work-icon,
+.animated-logo-container:hover .life-icon {
+  filter: brightness(1.2);
+  transition: filter 0.3s ease;
+}
+
+/* Smooth Entry Animation */
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px) rotateY(-10deg);
+  }
+  60% {
+    transform: scale(1.02) translateY(-5px) rotateY(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotateY(0deg);
+  }
+}
+
+.animated-logo-container {
+  animation: logoEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Color Shift Animation for Dynamic Feel */
+@keyframes colorShift {
+  0%, 100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(10deg);
+  }
+}
+
+.particles {
+  animation: colorShift 8s ease-in-out infinite;
+}
+
+/* 3D Perspective Enhancement */
+.animated-logo {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* Glow Pulse for Energy Elements */
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px currentColor) drop-shadow(0 0 20px currentColor);
+  }
+}
+
+.orbit-dots {
+  animation: glowPulse 3s ease-in-out infinite;
+}
