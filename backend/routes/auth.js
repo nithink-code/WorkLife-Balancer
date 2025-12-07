@@ -114,7 +114,7 @@ router.get("/logout", (req, res, next) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  ("Login attempt for email:", email);
+  console.log("Login attempt for email:", email);
 
   try {
     // Validate input
@@ -124,13 +124,13 @@ router.post("/login", async (req, res) => {
 
     const user = await UserAuth.findOne({ email });
     if (!user) {
-      ("User not found:", email);
+      console.log("User not found:", email);
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
     // Check if user has a password set
     if (!user.passwordHash) {
-      ("User exists but no password set:", email);
+      console.log("User exists but no password set:", email);
       return res.status(401).json({
         message: "No password set for this account. Please sign up or use Google Sign-In."
       });
@@ -138,7 +138,7 @@ router.post("/login", async (req, res) => {
 
     const isValidPassword = await bcrypt.compare(password, user.passwordHash);
     if (!isValidPassword) {
-      ("Invalid password for user:", email);
+      console.log("Invalid password for user:", email);
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
@@ -155,7 +155,7 @@ router.post("/login", async (req, res) => {
       maxAge: 2 * 60 * 60 * 1000,
     });
 
-    ("Login successful for user:", email);
+    console.log("Login successful for user:", email);
     res.status(200).json({
       message: "Login successful",
       token: token,
@@ -179,7 +179,7 @@ router.post("/signup", async (req, res) => {
   try {
     let { fullName, email, password } = req.body;
 
-    ("Signup request received:", { email, hasPassword: !!password, fullName });
+    console.log("Signup request received:", { email, hasPassword: !!password, fullName });
 
     // Validate input
     if (!email || !password) {
@@ -189,7 +189,7 @@ router.post("/signup", async (req, res) => {
     // Auto-generate fullName from email if not provided
     if (!fullName || fullName.trim() === "") {
       fullName = email.split("@")[0];
-      ("Auto-generated fullName:", fullName);
+      console.log("Auto-generated fullName:", fullName);
     }
 
     if (password.length < 6) {
@@ -201,13 +201,13 @@ router.post("/signup", async (req, res) => {
       // Check if user exists but has no password (OAuth only)
       if (!existingUser.passwordHash) {
         // Allow adding password to OAuth account
-        ("Adding password to existing OAuth account:", email);
+        console.log("Adding password to existing OAuth account:", email);
         const hashedPassword = await bcrypt.hash(password, 10);
         existingUser.passwordHash = hashedPassword;
         existingUser.displayName = existingUser.displayName || fullName;
         existingUser.name = existingUser.name || fullName;
         await existingUser.save();
-        ("Password added to OAuth account successfully");
+        console.log("Password added to OAuth account successfully");
         return res.status(201).json({
           message: "Password added successfully! You can now login with email and password.",
           success: true
@@ -227,7 +227,7 @@ router.post("/signup", async (req, res) => {
     });
 
     await newUser.save();
-    ("User created successfully:", newUser.email);
+    console.log("User created successfully:", newUser.email);
 
     res.status(201).json({
       message: "Account created successfully! Please login.",
